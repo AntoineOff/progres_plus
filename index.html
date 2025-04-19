@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progrès+ | Cours interactifs et quiz éducatifs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    Progrès+
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#" class="active">Accueil</a></li>
+                        <li><a href="#">Cours</a></li>
+                        <li><a href="#">Quiz</a></li>
+                        <li><a href="#">À propos</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons" id="authButtons">
+                    <a href="auth.html" class="btn btn-outline">Connexion</a>
+                    <a href="auth.html?signup=true" class="btn btn-primary">Inscription</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Apprenez, Progressez, Réussissez</h1>
+            <p>Progrès+ vous accompagne dans votre parcours éducatif avec des cours interactifs et des quiz personnalisés pour stimuler votre apprentissage.</p>
+            <button class="cta-btn" id="mainCTA">Commencer maintenant</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services</h2>
+                <p>Découvrez les outils pédagogiques que nous avons conçus pour vous aider à progresser dans vos études.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Cours Interactifs</h3>
+                    <p>Des cours dynamiques avec des supports variés pour faciliter votre compréhension et renforcer vos acquis.</p>
+                    <a href="#" class="btn btn-outline">Découvrir</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Quiz Éducatifs</h3>
+                    <p>Testez vos connaissances grâce à nos quiz variés et adaptés à votre niveau pour progresser efficacement.</p>
+                    <a href="#" class="btn btn-outline">Essayer</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Suivi de Progression</h3>
+                    <p>Visualisez vos avancées et identifiez vos points forts et axes d'amélioration pour optimiser votre apprentissage.</p>
+                    <a href="#" class="btn btn-outline">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pourquoi nous choisir ?</h2>
+                <p>Découvrez les témoignages de nos utilisateurs qui ont amélioré leurs résultats grâce à Progrès+.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Grâce aux cours interactifs de Progrès+, j'ai pu rapidement combler mes lacunes en mathématiques. Les quiz m'ont permis de consolider mes connaissances. Je recommande vivement !"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sophie M.</h4>
+                            <p>Étudiante en Terminale</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "En tant que parent, j'apprécie la facilité d'utilisation de la plateforme et la qualité des contenus proposés. Mon fils a gagné en autonomie et ses résultats se sont nettement améliorés."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Pierre D.</h4>
+                            <p>Parent d'élève</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Je préparais mon bac et j'étais en difficulté. Progrès+ m'a aidé à structurer mes révisions et à identifier mes points faibles. J'ai obtenu mon diplôme avec mention !"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Lucas T.</h4>
+                            <p>Étudiant en première année</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>À propos</h3>
+                    <ul>
+                        <li><a href="#">Notre mission</a></li>
+                        <li><a href="#">Notre équipe</a></li>
+                        <li><a href="#">Nos valeurs</a></li>
+                        <li><a href="#">Nous contacter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Cours interactifs</a></li>
+                        <li><a href="#">Quiz éducatifs</a></li>
+                        <li><a href="#">Suivi de progression</a></li>
+                        <li><a href="#">Tutorat personnalisé</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Assistance</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">Tutoriels</a></li>
+                        <li><a href="#">Support technique</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Progrès+ | Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
