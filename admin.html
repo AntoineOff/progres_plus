@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progrès+ | Panneau d'Administration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-graduation-cap"></i>
+                        Progrès+
+                    </a>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#">Cours</a></li>
+                        <li><a href="#">Quiz</a></li>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="admin.html" class="active">Admin</a></li>
+                    </ul>
+                </nav>
+                <div class="admin-user" id="adminUser">
+                    <span>Admin</span>
+                    <a href="#" id="logoutBtn" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Déconnexion
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <h3>Tableau de bord</h3>
+            <ul>
+                <li class="active" data-target="dashboard-home"><i class="fas fa-home"></i> Accueil</li>
+                <li data-target="courses-manager"><i class="fas fa-book"></i> Gestion des cours</li>
+                <li data-target="categories-manager"><i class="fas fa-folder"></i> Catégories</li>
+                <li data-target="users-manager"><i class="fas fa-users"></i> Utilisateurs</li>
+                <li data-target="stats-manager"><i class="fas fa-chart-bar"></i> Statistiques</li>
+                <li data-target="settings-manager"><i class="fas fa-cog"></i> Paramètres</li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <!-- Dashboard Home Section -->
+            <div class="content-section active" id="dashboard-home">
+                <h2>Tableau de bord</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total des cours</h3>
+                            <p class="stat-number">127</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Utilisateurs</h3>
+                            <p class="stat-number">3,542</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Vues</h3>
+                            <p class="stat-number">12,845</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Quiz complétés</h3>
+                            <p class="stat-number">4,289</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Activité récente</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Nouveau cours ajouté</strong> - "Géométrie dans l'espace" (Mathématiques, Terminale)</p>
+                                <span class="activity-time">Il y a 2 heures</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Cours mis à jour</strong> - "La révolution française" (Histoire, 4ème)</p>
+                                <span class="activity-time">Il y a 5 heures</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Nouvel utilisateur</strong> - Marie Durand s'est inscrit</p>
+                                <span class="activity-time">Hier, 15:23</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Cours supprimé</strong> - "Les fractions" (Mathématiques, CM1)</p>
+                                <span class="activity-time">Hier, 11:45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses Manager Section -->
+            <div class="content-section" id="courses-manager">
+                <div class="section-header">
+                    <h2>Gestion des cours</h2>
+                    <button class="btn btn-primary" id="newCourseBtn">
+                        <i class="fas fa-plus"></i> Nouveau cours
+                    </button>
+                </div>
+
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="filterDegree">Degré:</label>
+                        <select id="filterDegree" class="filter-select">
+                            <option value="">Tous</option>
+                            <option value="primaire">Primaire</option>
+                            <option value="college">Collège</option>
+                            <option value="lycee">Lycée</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filterLevel">Niveau:</label>
+                        <select id="filterLevel" class="filter-select">
+                            <option value="">Tous</option>
+                            <!-- Options dynamiques basées sur le degré sélectionné -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filterSubject">Matière:</label>
+                        <select id="filterSubject" class="filter-select">
+                            <option value="">Toutes</option>
+                            <!-- Options dynamiques -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <input type="text" id="searchCourse" placeholder="Rechercher un cours...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Degré</th>
+                                <th>Niveau</th>
+                                <th>Matière</th>
+                                <th>Date de création</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Les fractions</td>
+                                <td>Primaire</td>
+                                <td>CM1</td>
+                                <td>Mathématiques</td>
+                                <td>03/04/2025</td>
+                                <td><span class="status published">Publié</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-icon view" title="Voir"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Conjugaison - Le présent</td>
+                                <td>Primaire</td>
+                                <td>CE2</td>
+                                <td>Français</td>
+                                <td>01/04/2025</td>
+                                <td><span class="status published">Publié</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-icon view" title="Voir"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>L'énergie - Les sources renouvelables</td>
+                                <td>Collège</td>
+                                <td>5ème</td>
+                                <td>Sciences</td>
+                                <td>29/03/2025</td>
+                                <td><span class="status draft">Brouillon</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-icon view" title="Voir"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Géométrie dans l'espace</td>
+                                <td>Lycée</td>
+                                <td>Terminale</td>
+                                <td>Mathématiques</td>
+                                <td>20/04/2025</td>
+                                <td><span class="status published">Publié</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-icon view" title="Voir"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-angle-double-left"></i></button>
+                    <button class="page-btn"><i class="fas fa-angle-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn"><i class="fas fa-angle-right"></i></button>
+                    <button class="page-btn"><i class="fas fa-angle-double-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Categories Manager Section -->
+            <div class="content-section" id="categories-manager">
+                <div class="section-header">
+                    <h2>Gestion des catégories</h2>
+                    <div>
+                        <button class="btn btn-primary" id="newDegreeBtn"><i class="fas fa-plus"></i> Nouveau degré</button>
+                        <button class="btn btn-primary" id="newLevelBtn"><i class="fas fa-plus"></i> Nouveau niveau</button>
+                        <button class="btn btn-primary" id="newSubjectBtn"><i class="fas fa-plus"></i> Nouvelle matière</button>
+                    </div>
+                </div>
+
+                <div class="categories-container">
+                    <div class="category-column">
+                        <h3>Degrés</h3>
+                        <ul class="category-list">
+                            <li>
+                                <div class="category-item">
+                                    <span>Primaire</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>Collège</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>Lycée</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="category-column">
+                        <h3>Niveaux</h3>
+                        <div class="filter-group">
+                            <select id="levelDegreeFilter" class="filter-select">
+                                <option value="">Filtrer par degré</option>
+                                <option value="primaire">Primaire</option>
+                                <option value="college">Collège</option>
+                                <option value="lycee">Lycée</option>
+                            </select>
+                        </div>
+                        <ul class="category-list">
+                            <li>
+                                <div class="category-item">
+                                    <span>CP (Primaire)</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>CE1 (Primaire)</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>6ème (Collège)</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>2nde (Lycée)</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="category-column">
+                        <h3>Matières</h3>
+                        <ul class="category-list">
+                            <li>
+                                <div class="category-item">
+                                    <span>Mathématiques</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>Français</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>Histoire-Géographie</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>Sciences</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="category-item">
+                                    <span>Physique-Chimie</span>
+                                    <div class="category-actions">
+                                        <button class="btn-icon edit" title="Modifier"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Autres sections de gestion... -->
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Modal pour ajouter ou modifier un cours -->
+    <div class="modal" id="courseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="courseModalTitle">Nouveau cours</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="courseForm">
+                    <input type="hidden" id="courseId" value="">
+                    
+                    <div class="form-group">
+                        <label for="courseTitle">Titre du cours *</label>
+                        <input type="text" id="courseTitle" name="title" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="courseDegree">Degré *</label>
+                            <select id="courseDegree" name="degree" required>
+                                <option value="">Sélectionner</option>
+                                <option value="primaire">Primaire</option>
+                                <option value="college">Collège</option>
+                                <option value="lycee">Lycée</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="courseLevel">Niveau *</label>
+                            <select id="courseLevel" name="level" required>
+                                <option value="">Sélectionner</option>
+                                <!-- Options dynamiques selon le degré -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="courseSubject">Matière *</label>
+                            <select id="courseSubject" name="subject" required>
+                                <option value="">Sélectionner</option>
+                                <option value="mathematiques">Mathématiques</option>
+                                <option value="francais">Français</option>
+                                <option value="histoire-geo">Histoire-Géographie</option>
+                                <option value="sciences">Sciences</option>
+                                <option value="physique-chimie">Physique-Chimie</option>
+                                <option value="svt">SVT</option>
+                                <option value="langues">Langues</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="courseDescription">Description</label>
+                        <textarea id="courseDescription" name="description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="courseContent">Contenu du cours *</label>
+                        <textarea id="courseContent" name="content" rows="15" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="courseThumbnail">Image de couverture</label>
+                        <input type="file" id="courseThumbnail" name="thumbnail" accept="image/*">
+                        <div id="thumbnailPreview" class="thumbnail-preview"></div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="courseStatus">Statut</label>
+                            <select id="courseStatus" name="status">
+                                <option value="published">Publié</option>
+                                <option value="draft">Brouillon</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="courseOrder">Ordre d'affichage</label>
+                            <input type="number" id="courseOrder" name="order" min="1" value="1">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelCourseBtn">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour ajouter/modifier un degré -->
+    <div class="modal" id="degreeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="degreeModalTitle">Nouveau degré</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="degreeForm">
+                    <input type="hidden" id="degreeId" value="">
+                    
+                    <div class="form-group">
+                        <label for="degreeName">Nom du degré *</label>
+                        <input type="text" id="degreeName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="degreeDescription">Description</label>
+                        <textarea id="degreeDescription" name="description" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelDegreeBtn">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour ajouter/modifier un niveau -->
+    <div class="modal" id="levelModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="levelModalTitle">Nouveau niveau</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="levelForm">
+                    <input type="hidden" id="levelId" value="">
+                    
+                    <div class="form-group">
+                        <label for="levelName">Nom du niveau *</label>
+                        <input type="text" id="levelName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="levelDegree">Degré *</label>
+                        <select id="levelDegree" name="degreeId" required>
+                            <option value="">Sélectionner</option>
+                            <option value="1">Primaire</option>
+                            <option value="2">Collège</option>
+                            <option value="3">Lycée</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="levelDescription">Description</label>
+                        <textarea id="levelDescription" name="description" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelLevelBtn">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour ajouter/modifier une matière -->
+    <div class="modal" id="subjectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="subjectModalTitle">Nouvelle matière</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="subjectForm">
+                    <input type="hidden" id="subjectId" value="">
+                    
+                    <div class="form-group">
+                        <label for="subjectName">Nom de la matière *</label>
+                        <input type="text" id="subjectName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subjectDescription">Description</label>
+                        <textarea id="subjectDescription" name="description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subjectIcon">Icône (classe Font Awesome)</label>
+                        <input type="text" id="subjectIcon" name="icon" placeholder="fas fa-book">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelSubjectBtn">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.1.2/tinymce.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
